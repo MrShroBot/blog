@@ -1,9 +1,26 @@
-@extends('layout')
+@extends('partials.layout')
 
 @section('content')
     <h1 class="text-3xl font-bold underline">
         Hello welcome!
     </h1>
     <span class="loading loading-infinity loading-lg"></span>
-    <input type="range" min="0" max="100" value="40" class="range range-primary" />
+    <div class="container mx-auto">
+        <div class="flex flex-row flex-wrap">
+            @foreach($articles as $article)
+                <div class="basis-1/4 mb-4">
+                    <div class="card w-96 bg-base-100 shadow-xl image-full h-full">
+{{--                        <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>--}}
+                        <div class="card-body">
+                            <h2 class="card-title">{{$article->title}}</h2>
+                            <p>{{$article->body}}</p>
+                            <div class="card-actions justify-end">
+                                <button class="btn btn-primary">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection
