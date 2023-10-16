@@ -2,7 +2,6 @@
 
 @section('content')
     <h1 class="text-3xl font-bold underline">
-        Hello about!
+        About
     </h1>
-    <span class="loading loading-infinity loading-lg"></span>
 @endsection
