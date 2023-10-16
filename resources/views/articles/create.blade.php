@@ -4,7 +4,7 @@
     <div class="container mx-auto w-1/2">
         <div class="card bg-base-100 shadow-xl">
             <div class="card-body">
-                <form action="{{route('articles.store')}}" method="POST">
+                <form action="{{route('articles.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-control w-full">
                         <label class="label">
@@ -28,6 +28,19 @@
                             <label class="label">
                                 <span class="label-text-alt text-error">{{$message}}</span>
                             </label>
+                        @enderror
+                    </div>
+                    <div class="form-control w-full">
+                        <label class="label">
+                            <span class="label-text">File</span>
+
+                        </label>
+                        <input name="image" type="file" placeholder="File" class="file-input input-bordered w-full @error('title') input-error @enderror"/>
+                        @error('title')
+                        <label class="label">
+                            <span class="label-text-alt text-error">{{$message}}</span>
+
+                        </label>
                         @enderror
                     </div>
                     <input type="submit" value="Create" class="btn btn-primary mt-3">

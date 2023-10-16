@@ -30,8 +30,9 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
-
+        dd($request->file('image')->store('/public'));
         $article = new Article($request->validated());
+
         $article->save();
         return redirect()->route('articles.index');
     }
@@ -57,6 +58,8 @@ class ArticleController extends Controller
      */
     public function update(UpdateArticleRequest $request, Article $article)
     {
+//        $article->title = $request->validated('title');
+//        $article->body = $request->validated('body');
         $article->fill($request->validated());
         $article->save();
         return redirect()->route('articles.index');
