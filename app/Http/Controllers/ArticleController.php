@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -14,6 +15,15 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::latest()->paginate();
+        return view('articles.index', compact('articles'));
+    }
+
+    /**
+     * Display a listing of the deleted resource.
+     */
+    public function deleted()
+    {
+        $articles = Article::onlyTrashed()->orderBy('deleted_at')->paginate();
         return view('articles.index', compact('articles'));
     }
 
@@ -30,9 +40,9 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
-        dd($request->file('image')->store('/public'));
+        $file = $request->file('image')->store('/public');
         $article = new Article($request->validated());
-
+        $article->image = Storage::url($file);
         $article->save();
         return redirect()->route('articles.index');
     }

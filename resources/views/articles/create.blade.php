@@ -32,15 +32,13 @@
                     </div>
                     <div class="form-control w-full">
                         <label class="label">
-                            <span class="label-text">File</span>
-
+                            <span class="label-text">Image</span>
                         </label>
-                        <input name="image" type="file" placeholder="File" class="file-input input-bordered w-full @error('title') input-error @enderror"/>
-                        @error('title')
-                        <label class="label">
-                            <span class="label-text-alt text-error">{{$message}}</span>
-
-                        </label>
+                        <input name="image" type="file" class="file-input input-bordered w-full @error('image') input-error @enderror"/>
+                        @error('image')
+                            <label class="label">
+                                <span class="label-text-alt text-error">{{$message}}</span>
+                            </label>
                         @enderror
                     </div>
                     <input type="submit" value="Create" class="btn btn-primary mt-3">

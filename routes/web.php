@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PublicController::class, 'index']);
 Route::get('/about', [PublicController::class, 'about']);
 
-Route::get('/admin/articles/deleted', [ArticleController::class, 'index'])->name('articles.deleted');
+Route::get('/admin/articles/deleted', [ArticleController::class, 'deleted'])->name('articles.deleted');
 
 //Route::get('/admin/articles', [ArticleController::class, 'index'])->name('articles.index');
 //Route::get('/admin/articles/create', [ArticleController::class, 'create'])->name('articles.create');
@@ -28,7 +28,7 @@ Route::get('/admin/articles/deleted', [ArticleController::class, 'index'])->name
 //Route::get('/admin/articles/{article}', [ArticleController::class, 'edit'])->name('articles.edit');
 //Route::put('/admin/articles/{article}', [ArticleController::class, 'update'])->name('articles.update');
 //Route::delete('/admin/articles/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy');
-Route::resource('/admin/articles', ArticleController::class);
+
 
 
 Route::get('/dashboard', function () {
@@ -36,6 +36,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
+    Route::resource('/admin/articles', ArticleController::class);
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

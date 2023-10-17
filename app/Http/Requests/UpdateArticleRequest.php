@@ -22,8 +22,8 @@ class UpdateArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'=>'required',
-            'body'=>'required',
+            'title' => 'required',
+            'body' => 'required',
         ];
     }
 }

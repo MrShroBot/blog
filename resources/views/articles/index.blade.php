@@ -3,7 +3,8 @@
 @section('content')
     <div class="container mx-auto">
         <a class="btn btn-primary" href="{{route('articles.create')}}">New Article</a>
-        <a class="btn btn-primary" href="{{route('articles.deleted')}}">Deleted Articles</a>
+        <a class="btn btn-secondary" href="{{route('articles.deleted')}}">Deleted articles</a>
+
         {{$articles->links()}}
         <table class="table">
             <thead>
