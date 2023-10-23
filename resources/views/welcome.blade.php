@@ -14,7 +14,7 @@
                             <h2 class="card-title">{{ $article->title }}</h2>
                             <p>{{ $article->snippet }}</p>
                             <div class="stat">
-                                <div class="stat-desc">{{ $article->user->name }}</div>
+                                <div class="stat-desc">{{ $article->user }}</div>
                                 <div class="stat-desc">{{ $article->created_at->diffForHumans() }}</div>
                             </div>
                             <div class="card-actions justify-end">
