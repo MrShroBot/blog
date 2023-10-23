@@ -14,7 +14,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::latest()->paginate();
+        $articles = auth()->user()->articles()->latest()->paginate();
         return view('articles.index', compact('articles'));
     }
 
@@ -41,8 +41,11 @@ class ArticleController extends Controller
     public function store(StoreArticleRequest $request)
     {
         $file = $request->file('image')->store('/public');
-        $article = new Article($request->validated());
-        $article->image = Storage::url($file);
+        if ($request->file('image')){
+            $article = new Article($request->validated());
+            $article->image = Storage::url($file);
+        }
+        $article->user()->associate(auth()->user());
         $article->save();
         return redirect()->route('articles.index');
     }
