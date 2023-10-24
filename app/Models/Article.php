@@ -25,6 +25,17 @@ class Article extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+    public function image(): Attribute
+    {
+        return Attribute::get(function (){
+            return $this->images()->first();
+        });
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
