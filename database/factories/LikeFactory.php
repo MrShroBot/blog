@@ -20,7 +20,7 @@ class LikeFactory extends Factory
     {
         $created = fake()->dateTimeBetween('-5 years', 'now');
         $updated = fake()->dateTimeBetween($created, 'now');
-        if (rand(0,10) !== 0){
+        if (rand(0, 10) !== 0) {
             $updated = $created;
         }
         return [

@@ -9,8 +9,9 @@ use App\Http\Requests\UpdateLikeRequest;
 
 class LikeController extends Controller
 {
-    public function like(Article $article){
-        if (auth()->user()->likes()->where('article_id', $article->id)->exists()){
+    public function like(Article $article)
+    {
+        if (auth()->user()->likes()->where('article_id', $article->id)->exists()) {
             $like = auth()->user()->likes()->where('article_id', $article->id)->first();
             $like->delete();
         } else {

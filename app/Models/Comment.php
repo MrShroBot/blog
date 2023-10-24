@@ -9,10 +9,13 @@ class Comment extends Model
 {
     use HasFactory;
 
-    public function  article(){
+    public function article()
+    {
         return $this->belongsTo(Article::class);
     }
-    public function  user(){
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

@@ -18,11 +18,19 @@
                                 <div class="stat-desc"><b>Comments: </b>{{ $article->comments()->count() }}</div>
                                 <div class="stat-desc"><b>likes: </b>{{ $article->likes()->count() }}</div>
                                 <div class="stat-desc">{{ $article->created_at->diffForHumans() }}</div>
+                                <div class="stat-desc flex flex-wrap">
+                                    @foreach($article->tags as $tag)
+                                        <a href="{{route('public.tag',['tag' => $tag])}}">
+                                            <div class="stat-desc badge badge-primary badge-outline mt-1 mr-1">{{ $tag->name }}</div>
+                                        </a>
+                                    @endforeach
+                                </div>
                             </div>
                             <div class="card-actions justify-end">
                                 <form action="{{route('like', ['article'=>$article])}}" method="POST">
                                     @csrf
-                                    <input type="submit" class="btn btn-primary" value="like">
+                                    <input type="submit" class="btn btn-primary"
+                                           value="{{$article->authHasLiked() ? 'Unlike' : 'Like'}}">
                                 </form>
                                 <a href="{{route('public.article',['article' => $article])}}" class="btn btn-primary">Comments</a>
                             </div>

@@ -17,11 +17,11 @@ class LikeSeeder extends Seeder
     {
         $users = User::all();
         $articles = Article::all();
-        foreach ($articles as $article){
-            $randomCount = rand(0,$users->count());
+        foreach ($articles as $article) {
+            $randomCount = rand(0, $users->count());
             $LikeUsers = $users->random($randomCount);
             $likes = Like::factory($randomCount)->make();
-            foreach ($likes as $like){
+            foreach ($likes as $like) {
                 $like->article_id = $article->id;
                 $like->user_id = $LikeUsers->pop()->id;
                 $like->save();
