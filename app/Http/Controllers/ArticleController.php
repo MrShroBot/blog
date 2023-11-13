@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use App\Models\Tag;
+use http\Client\Curl\User;
 use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
@@ -14,7 +16,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = auth()->user()->articles()->latest()->paginate();
+        $articles = auth()->user()->latest()->paginate();
         return view('articles.index', compact('articles'));
     }
 
@@ -32,7 +34,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        $tags = Tag::all();
+        return view('articles.create',compact('tags'));
+
     }
 
     /**
@@ -40,13 +44,27 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
-        $file = $request->file('image')->store('/public');
-        if ($request->file('image')){
-            $article = new Article($request->validated());
-            $article->image = Storage::url($file);
-        }
+        $article = new Article($request->validated());
         $article->user()->associate(auth()->user());
         $article->save();
+
+
+        if ($request->file('images')){
+            foreach ($request->file('images') as $image){
+                $file = $image->store('/public');
+                $img = new Image();
+                $img->path = Storage::url($file);
+                $img->article()->associate($article);
+                $img->save();
+            }
+        }
+
+        if ($request->input('tags')){
+            foreach ($request->input('tags') as $tagId){
+                $article->tags()->attach($tagId);
+            }
+        }
+
         return redirect()->route('articles.index');
     }
 
@@ -55,7 +73,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return view('articles.view', compact('article'));
     }
 
     /**
