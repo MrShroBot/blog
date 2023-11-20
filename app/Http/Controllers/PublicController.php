@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PublicController extends Controller
@@ -21,7 +22,13 @@ class PublicController extends Controller
         return view('welcome', compact('articles'));
     }
 
+    public function user(User  $user){
+        $articles = $user->Users()->paginate(12);
+        return view('welcome', compact('articles'));
+    }
+
     public function about(){
         return view('about');
     }
 }
+

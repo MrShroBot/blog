@@ -22,7 +22,7 @@
                             <h2 class="card-title">{{ $article->title }}</h2>
                             <p>{{ $article->snippet }}</p>
                             <div class="stat">
-                                <div class="stat-desc">{{ $article->user->name }}</div>
+                                <a href="{{route('public.user',['user' => $article->user])}}" class="stat-desc">{{ $article->user->name }}</a>
                                 <div class="stat-desc"><b>Comments: </b>{{ $article->comments()->count() }}</div>
                                 <div class="stat-desc"><b>likes: </b>{{ $article->likes()->count() }}</div>
                                 <div class="stat-desc">{{ $article->created_at->diffForHumans() }}</div>

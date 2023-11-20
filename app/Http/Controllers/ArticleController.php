@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use App\Models\Image;
 use App\Models\Tag;
 use http\Client\Curl\User;
 use Illuminate\Support\Facades\Storage;
@@ -62,6 +63,12 @@ class ArticleController extends Controller
         if ($request->input('tags')){
             foreach ($request->input('tags') as $tagId){
                 $article->tags()->attach($tagId);
+            }
+        }
+
+        if ($request->input('users')){
+            foreach ($request->input('users') as $UserId){
+                $article->users()->attach($UserId);
             }
         }
 
