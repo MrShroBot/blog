@@ -1,19 +1,17 @@
 @if ($paginator->hasPages())
-    <nav>
-        <ul class="pagination">
+    <div class="join my-5">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
-                <li class="disabled" aria-disabled="true"><span>@lang('pagination.previous')</span></li>
+                <a rel="previos" class="disabled join-item btn btn-sm">@lang('pagination.previous')</a>
             @else
-                <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">@lang('pagination.previous')</a></li>
+                <a href="{{ $paginator->previousPageUrl() }}" rel="next" class="join-item btn btn-sm">@lang('pagination.previous')</a>
             @endif
 
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
-                <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">@lang('pagination.next')</a></li>
+                <a href="{{ $paginator->nextPageUrl() }}" rel="next" class="join-item btn btn-sm">@lang('pagination.next')</a>
             @else
-                <li class="disabled" aria-disabled="true"><span>@lang('pagination.next')</span></li>
-            @endif
-        </ul>
-    </nav>
+                <a rel="next" class="disabled join-item btn btn-sm">@lang('pagination.next')</a>
+        @endif
+    </div>
 @endif
