@@ -12,7 +12,8 @@
                 <th>Title</th>
                 <th>Created</th>
                 <th>Updated</th>
-                <th>Actions</th>
+                <th>Price</th>
+                <th>Material</th>
             </thead>
             <tbody>
                 @foreach($articles as $article)
@@ -21,6 +22,8 @@
                         <td>{{$article->title}}</td>
                         <td>{{$article->created_at}}</td>
                         <td>{{$article->updated_at}}</td>
+                        <td>{{$article->price}}</td>
+                        <td>{{$article->material}}</td>
                         <td>
                             <div class="join">
                                 <a href="{{route('articles.show', ['article' => $article])}}" class="btn btn-info join-item" >View</a>

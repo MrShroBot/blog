@@ -12,6 +12,8 @@
                     <div class="stat">
                         <div class="stat-desc">{{ $article->user->name }}</div>
                         <div class="stat-desc">{{ $article->created_at->diffForHumans() }}</div>
+                        <div class="stat-desc">{{ $article->price }}</div>
+                        <div class="stat-desc">{{ $article->mateial }}</div>
                     </div>
 
             </div>

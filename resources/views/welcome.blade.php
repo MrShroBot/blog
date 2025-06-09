@@ -23,22 +23,8 @@
                             <p>{{ $article->snippet }}</p>
                             <div class="stat">
 
-                                <!-- <a href="{{route('public.user',['user' => $article->user])}}" class="stat-desc">{{ $article->user->name }}</a>
-                                <div class="stat-desc"><b>Comments: </b>{{ $article->comments()->count() }}</div>
-                                <div class="stat-desc"><b>likes: </b>{{ $article->likes()->count() }}</div>
-                                <div class="stat-desc">{{ $article->created_at->diffForHumans() }}</div>
-                                <div class="stat-desc flex flex-wrap">
-                                    
-                                        
-                                </div>
-                            </div>
-                            <div class="card-actions justify-end">
-                                <form action="{{route('like', ['article'=>$article])}}" method="POST">
-                                    @csrf
-                                     <input type="submit" class="btn btn-primary"
-                                           value="{{$article->authHasLiked() ? 'Unlike' : 'Like'}}"> 
-                                </form>
-                                <a href="{{route('public.article',['article' => $article])}}" class="btn btn-primary">Comments</a> -->
+                                <div class="static-desc"><b>Price:</b> {{ $article->price }}€</div>
+                                <div class="static-desc"><b>Material:</b> {{ $article->material }}</div>
                             
                             </div>
                         </div>

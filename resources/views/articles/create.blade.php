@@ -32,17 +32,28 @@
                     </div>
                     <div class="form-control w-full">
                         <label class="label">
-                            <span class="label-text">Tags</span>
+                            <span class="label-text">Material</span>
+
                         </label>
-                            <select multiple class="select select-bordered" name="tags[]">
-                                @foreach($tags as $tag)
-                                    <option value="{{$tag->id}}">{{$tag->name}}</option>
-                                @endforeach
-                            </select>
-                        @error('tags.*')
+                        <input name="material" type="text" placeholder="Product Material" class="input input-bordered w-full @error('title') input-error @enderror"/>
+                        @error('material')
+                            <label class="label">
+                                <span class="label-text-alt text-error">{{$message}}</span>
+
+                            </label>
+                        @enderror
+                    </div>
+                    <div class="form-control w-full">
                         <label class="label">
-                            <span class="label-text-alt text-error">{{$message}}</span>
+                            <span class="label-text">Price</span>
+
                         </label>
+                        <input name="price" type="number" placeholder="Product Price" class="input input-bordered w-full @error('price') input-error @enderror"/>
+                        @error('price')
+                            <label class="label">
+                                <span class="label-text-alt text-error">{{$message}}</span>
+
+                            </label>
                         @enderror
                     </div>
                     <div class="form-control w-full">

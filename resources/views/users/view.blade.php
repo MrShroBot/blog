@@ -24,7 +24,6 @@
                             <div class="stat">
                                 <div class="stat-desc">{{ $article->user->name }}</div>
                                 <div class="stat-desc"><b>Comments: </b>{{ $article->comments()->count() }}</div>
-                                <div class="stat-desc"><b>likes: </b>{{ $article->likes()->count() }}</div>
                                 <div class="stat-desc">{{ $article->created_at->diffForHumans() }}</div>
                                 <div class="stat-desc flex flex-wrap">
                                     @foreach($article->tags as $tag)

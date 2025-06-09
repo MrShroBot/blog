@@ -4,6 +4,8 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\PriceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\UserController;
@@ -24,7 +26,8 @@ Route::get('/', [PublicController::class, 'index']);
 Route::get('/about', [PublicController::class, 'about']);
 Route::get('/article/{article}', [PublicController::class, 'article'])->name('public.article');
 Route::get('/user/{user}', [PublicController::class, 'user'])->name('public.user');
-Route::get('/tag/{tag}', [PublicController::class, 'tag'])->name('public.tag');
+Route::get('/material/{material}', [PublicController::class, 'material'])->name('public.material');
+Route::get('/price/{price}', [PublicController::class, 'price'])->name('public.price');
 
 Route::get('/admin/articles/deleted', [ArticleController::class, 'deleted'])->name('articles.deleted');
 Route::get('/admin/users/deleted', [ArticleController::class, 'deleted'])->name('users.deleted');
@@ -45,7 +48,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/admin/articles', ArticleController::class);
     Route::post('/article/{article}', [CommentController::class, 'store'])->name('comments.store');
-    Route::post('/article/{article}/like', [LikeController::class, 'like'])->name('like');
+    Route::post('/article/{article}/material', [MaterialController::class, 'material'])->name('material');
+    Route::post('/article/{article}/price', [PriceController::class, 'price'])->name('price');
 
     Route::resource('/admin/users', UserController::class);
 

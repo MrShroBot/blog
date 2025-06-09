@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use App\Models\Tag;
+use App\Models\Material;
+use App\Models\Price;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -17,10 +18,16 @@ class PublicController extends Controller
         return view('article', compact('article'));
     }
 
-    public function tag(Tag  $tag){
-        $articles = $tag->articles()->paginate(12);
+    public function material(Material  $material){
+        $articles = $material->articles()->paginate(12);
         return view('welcome', compact('articles'));
     }
+
+    public function price(Price  $price){
+        $articles = $price->articles()->paginate(12);
+        return view('welcome', compact('articles'));
+    }
+
 
     public function user(User  $user){
         $articles = $user->Users()->paginate(12);
