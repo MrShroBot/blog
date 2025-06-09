@@ -6,8 +6,8 @@ use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Image;
-use App\Models\Price;
-use App\Models\Material;
+use App\Models\Tag;
+use http\Client\Curl\User;
 use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
@@ -35,11 +35,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $material = Material::all();
-        return view('articles.create',compact('material'));
-        
-        $price = Price::all();
-        return view('articles.create',compact('price'));
+        $tags = Tag::all();
+        return view('articles.create',compact('tags'));
 
     }
 
@@ -63,15 +60,9 @@ class ArticleController extends Controller
             }
         }
 
-        if ($request->input('material')){
-            foreach ($request->input('material') as $MaterialId){
-                $article->materials()->attach($MaterialId);
-            }
-        }
-
-        if ($request->input('price')){
-            foreach ($request->input('price') as $PriceId){
-                $article->prices()->attach($PriceId);
+        if ($request->input('tags')){
+            foreach ($request->input('tags') as $tagId){
+                $article->tags()->attach($tagId);
             }
         }
 

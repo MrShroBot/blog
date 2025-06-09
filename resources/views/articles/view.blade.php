@@ -14,9 +14,9 @@
                     <div class="stat-desc">{{ $article->user->name }}</div>
                     <div class="stat-desc">{{ $article->created_at->diffForHumans() }}</div>
                 </div>
-                @foreach($article->materials as $material)
-                    <a href="{{route('public.tag',['tag' => $material])}}">
-                        <div class="stat-desc badge badge-primary badge-outline mt-1 mr-1">{{ $material->name }}</div>
+                @foreach($article->tags as $tag)
+                    <a href="{{route('public.tag',['tag' => $tag])}}">
+                        <div class="stat-desc badge badge-primary badge-outline mt-1 mr-1">{{ $tag->name }}</div>
                     </a>
                 @endforeach
             </div>

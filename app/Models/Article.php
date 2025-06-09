@@ -11,7 +11,7 @@ class Article extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['title', 'body','price','material'];
+    protected $fillable = ['title', 'body'];
 
     protected function snippet(): Attribute
     {
@@ -41,16 +41,15 @@ class Article extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function prices()
+    public function likes()
     {
-        return $this->belongsToMany(Price::class);
+        return $this->hasMany(Like::class);
     }
 
-    public function materials()
+    public function tags()
     {
-        return $this->hasMany(Material::class);
+        return $this->belongsToMany(Tag::class);
     }
-
 
     public function authHasLiked()
     {

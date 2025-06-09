@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Material;
+use App\Models\Tag;
 use App\Http\Requests\StoreTagRequest;
-use App\Http\Requests\UpdateMaterialRequest;
+use App\Http\Requests\UpdateTagRequest;
 
-class MaterialController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class MaterialController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UpdateMaterialRequest $request)
+    public function store(StoreTagRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class MaterialController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Material $material)
+    public function show(Tag $tag)
     {
         //
     }
@@ -43,7 +43,7 @@ class MaterialController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Material $material)
+    public function edit(Tag $tag)
     {
         //
     }
@@ -51,7 +51,7 @@ class MaterialController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMaterialRequest $request, Material $material)
+    public function update(UpdateTagRequest $request, Tag $tag)
     {
         //
     }
@@ -59,7 +59,7 @@ class MaterialController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Material $material)
+    public function destroy(Tag $tag)
     {
         //
     }
