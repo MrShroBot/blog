@@ -17,7 +17,8 @@
     </div>
     <div class="navbar-end">
         @guest
-            <a href="{{route('login')}}" class="btn">Login</a>
+            <a href="{{route('register')}}" class="btn btn-primary mr-3">Register</a>
+            <a href="{{route('login')}}" class="btn btn-secondary">Login</a>
         @else
             <ul class="menu menu-horizontal px-1">
                 <li>
